@@ -1,0 +1,86 @@
+.container {
+  padding-bottom: 5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formContainer {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  width: 40rem;
+}
+
+.formContainer div {
+  width: 100%;
+}
+
+.formQuestions {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: solid 1px lightgray;
+  padding: 1rem;
+  box-shadow: 3px 3px 0px 0px lightgray;
+  background-color: white;
+  gap: 1rem;
+}
+
+.formQuestions div:not(:first-child) {
+  border-top: 1px solid lightgrey;
+}
+
+button {
+  width: 5rem;
+  height: auto;
+  padding: 0.3rem;
+  background-color: white;
+  border: 0px;
+  box-shadow: 1px 1px 0px 0px lightgray;
+}
+
+button:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 0px 1px lightgray;
+}
+
+button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.questionOptionsCreated {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.formDescription {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: solid 1px lightgray;
+  padding: 1rem;
+  box-shadow: 3px 3px 0px 0px lightgray;
+  background-color: white;
+  gap: 1rem;
+}
+
+.formDescription input {
+  width: 100%;
+  height: 35px;
+  border: 0px;
+  border-bottom: 1px solid lightgray;
+  outline: none;
+}
+
+input:disabled {
+  background-color: white;
+  color: black;
+}

@@ -1,0 +1,66 @@
+a {
+  text-decoration: none;
+}
+
+.formTypes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: gainsboro;
+  padding: 1rem;
+  margin: 0px;
+}
+
+.formTypes svg {
+  color: black;
+  width: 3rem;
+  height: 3rem;
+}
+
+.newForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid gray;
+  background-color: white;
+  width: 10rem;
+  height: 8rem;
+  padding: 5px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid gray;
+  background-color: white;
+  width: 10rem;
+  height: 8rem;
+  gap: 1rem;
+}
+
+.form p {
+  margin: 0px
+}
+
+.form svg {
+  color: black;
+  width: 3rem;
+  height: 3rem;
+}
+
+.existentForms {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin: 0px;
+}
+
+.existentForms ul {
+  display: flex;
+  gap: 0.5rem;
+}
