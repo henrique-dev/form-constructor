@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+SCRIPT_ROOT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+source "$SCRIPT_ROOT_DIR/scripts/vars.sh"
+source "$SCRIPT_ROOT_DIR/scripts/docker-utils.sh"
+
+if [ $1 ]; then
+  if [ "${PROJECT_CONTAINER_TO_UP_NAMES["$1"]}" ]; then
+    echo "Iniciando containers do projeto $1"
+    docker-compose -f "${PROJECT_DOCKER_PATH_FILES[$1]}" -p "$1" --project-directory "${PROJECT_PATH_FILES[$1]}" --env-file hosts up web
+  else
+    echo "O projeto não existe"
+  fi
+fi

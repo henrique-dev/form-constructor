@@ -12,10 +12,7 @@
   gap: 1rem;
   flex-direction: column;
   width: 40rem;
-}
-
-.formContainer div {
-  width: 100%;
+  align-items: center;
 }
 
 .formQuestions {
@@ -34,10 +31,8 @@
 }
 
 button {
-  width: 5rem;
   height: auto;
   padding: 0.3rem;
-  background-color: white;
   border: 0px;
   box-shadow: 1px 1px 0px 0px lightgray;
 }
@@ -58,4 +53,17 @@ button svg {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
+}
+
+.formContainer button {
+  background-color: #28a745;
+  width: 15rem;
+  color: white;
+  width: auto;
+  padding: 0.5rem;
+  height: 2rem;
+}
+
+.formContainer button:hover {
+  background-color: #228f3b;
 }

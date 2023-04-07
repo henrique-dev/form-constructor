@@ -41,7 +41,7 @@ export const useNewForm = () => {
       return;
     }
 
-    fetch('http://localhost:8080/forms', {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/forms`, {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(currentForm),

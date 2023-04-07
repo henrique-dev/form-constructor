@@ -4,10 +4,10 @@ import { RootLayout } from './pages/RootLayout';
 import { NewFormPage } from './pages/NewFormPage';
 import { HomePage } from './pages/HomePage';
 import { FormPage, loader as formLoader } from './pages/FormPage';
-import { AnswerPage } from './pages/AnswerPage';
+import { AnswersPage } from './pages/AnswersPage';
 import { SuccessPage } from './pages/SuccessPage';
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
               },
               {
                 path: 'answers',
-                element: <AnswerPage />,
+                element: <AnswersPage />,
                 loader: formLoader,
               },
             ],

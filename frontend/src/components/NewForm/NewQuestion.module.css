@@ -9,6 +9,7 @@
   box-shadow: 3px 3px 0px 0px lightgray;
   background-color: white;
   gap: 1rem;
+  width: 100%;
 }
 
 .formContainerNewQuestion input {
@@ -25,6 +26,19 @@
   outline: none;
 }
 
+.formContainerNewQuestion button {
+  background-color: #17a2b8;
+  color: white;
+  width: auto;
+  height: 2rem;
+  padding: 0.5rem;
+}
+
+.formContainerNewQuestion button:hover {
+  background-color: #158497;
+  color: white;
+}
+
 .questionType {
   display: flex;
   width: 100%;
@@ -32,6 +46,10 @@
 
 .questionType input {
   flex-grow: 1;
+}
+
+.questionOptions {
+  width: 100%;
 }
 
 .questionOptions li {

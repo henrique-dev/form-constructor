@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+SCRIPT_ROOT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+source "$SCRIPT_ROOT_DIR/scripts/vars.sh"
+
+./bin/dev-stop
+
+docker-compose -f $DOCKER_DIR/common/docker-compose.yml -p common build
+
+for project_name in "${!PROJECT_DOCKER_PATH_FILES[@]}"; do
+  echo "Construindo containers do projeto $project_name"
+  docker-compose -f "${PROJECT_DOCKER_PATH_FILES[$project_name]}" -p "$project_name" --project-directory "${PROJECT_PATH_FILES[$project_name]}" --env-file hosts build
+done

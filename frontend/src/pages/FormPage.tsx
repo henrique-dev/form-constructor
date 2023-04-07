@@ -9,7 +9,7 @@ export const FormPage = () => {
 };
 
 const loadForm = async (formId: string) => {
-  const response = await fetch('http://localhost:8080/forms/' + formId);
+  const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/forms/${formId}`);
 
   if (!response.ok) {
     throw json(

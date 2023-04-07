@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+SCRIPT_ROOT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+source "$SCRIPT_ROOT_DIR/scripts/vars.sh"
+
+for project_name in "${!PROJECT_CONTAINER_TO_UP_NAMES[@]}"; do
+  if [ "$(docker ps -a -q -f name="${PROJECT_CONTAINER_TO_UP_NAMES[$project_name]}")" ]; then
+    echo "Parando containers do projeto $project_name"
+    docker-compose -f "${PROJECT_DOCKER_PATH_FILES[$project_name]}" -p "$project_name" --project-directory "${PROJECT_PATH_FILES[$project_name]}" down
+  fi
+done
+
+if [ "$(docker ps -a -q -f name=common)" ]; then
+  echo "Parando containers do projeto common"
+  docker-compose -f $DOCKER_DIR/common/docker-compose.yml -p common down
+fi

@@ -2,6 +2,12 @@ import { FormType } from '../NewForm/types';
 import styles from './Questions.module.css';
 
 export const Questions = (props: { form: FormType }) => {
+
+  const copyToClipBoardHandler = () => {
+    navigator.clipboard.writeText(`${process.env.REACT_APP_FRONTEND_URL}/forms/${props.form.id}/answers`);
+    alert("Link copiado para area de transferencia!");
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.formContainer}>
@@ -12,6 +18,13 @@ export const Questions = (props: { form: FormType }) => {
           <div>
             <input disabled={true} value={props.form.description} />
           </div>
+        </div>
+        <div className={styles.copyButton}>
+          <button
+            onClick={copyToClipBoardHandler}
+          >
+            Copiar Link para Responder
+          </button>
         </div>
         {props.form.questions?.length > 0 && (
           <div className={styles.formQuestions}>

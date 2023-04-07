@@ -27,7 +27,7 @@ export const Answers = (props: { form: FormType }) => {
 };
 
 const loadAnswers = async (formId: string) => {
-  const response = await fetch(`http://localhost:8080/forms/${formId}/answers`, { headers: { 'Content-Type': 'application/json' } });
+  const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/forms/${formId}/answers`, { headers: { 'Content-Type': 'application/json' } });
 
   if (!response.ok) {
     throw json(

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+SCRIPT_ROOT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+source "$SCRIPT_ROOT_DIR/scripts/vars.sh"
+source "$SCRIPT_ROOT_DIR/scripts/docker-utils.sh"
+
+./bin/dev-stop
+
+docker-compose -f $DOCKER_DIR/common/docker-compose.yml -p common up -d
+
+# wait_for_container postgresdb
+
+if [ $1 ]; then
+  if [ "${PROJECT_CONTAINER_TO_UP_NAMES["$1"]}" ]; then
+    if [ "$(docker ps -a -q -f name="${PROJECT_CONTAINER_TO_UP_NAMES["$1"]}")" ]; then
+      echo "Restarting the container $1"
+      docker-compose -f "${PROJECT_DOCKER_PATH_FILES[$1]}" -p "$1" --project-directory "${PROJECT_PATH_FILES[$1]}" down
+    fi
+    docker-compose -f "${PROJECT_DOCKER_PATH_FILES[$1]}" -p "$1" --project-directory "${PROJECT_PATH_FILES[$1]}" --env-file hosts up web -d    
+    wait_for_container ${PROJECT_CONTAINER_TO_UP_NAMES[$1]}
+  else
+    echo "The project does not exist"
+  fi
+else
+  for project_name in "${!PROJECT_CONTAINER_TO_UP_NAMES[@]}"; do
+    echo "Starting containers of the project $project_name"
+    docker-compose -f "${PROJECT_DOCKER_PATH_FILES[$project_name]}" -p "$project_name" --project-directory "${PROJECT_PATH_FILES[$project_name]}" --env-file hosts up web -d
+    wait_for_container ${PROJECT_CONTAINER_TO_UP_NAMES[$project_name]}
+  done  
+fi

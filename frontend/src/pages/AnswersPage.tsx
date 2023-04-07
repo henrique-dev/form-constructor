@@ -2,15 +2,13 @@ import { json, LoaderFunction, defer, useLoaderData } from 'react-router-dom';
 import { Answers } from '../components/Answers';
 import { FormType } from '../components/NewForm/types';
 
-export const AnswerPage = () => {
+export const AnswersPage = () => {
   const form = useLoaderData() as FormType;
   return <Answers form={form} />;
 };
 
 const loadForm = async (formId: string) => {
-  console.log(formId);
-
-  const response = await fetch('http://localhost:8080/forms/' + formId);
+  const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/forms/${formId}`);
 
   if (!response.ok) {
     throw json(

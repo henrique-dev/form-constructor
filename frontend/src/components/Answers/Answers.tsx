@@ -7,9 +7,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ReducerType } from '../../store';
 import { AnswerFormsStateType, answerFormActions } from '../../store/answer-form';
 import { DocumentPlusIcon } from '@heroicons/react/24/solid';
+import { useNavigate } from 'react-router-dom';
 
 export const Answers = (props: { form: FormType }) => {
   const { email, form, questions } = useSelector<ReducerType>((state) => state.answerForm) as AnswerFormsStateType;
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,7 +36,7 @@ export const Answers = (props: { form: FormType }) => {
   };
 
   const sendFormQuestionsHandler = () => {
-    fetch(`http://localhost:8080/forms/${form.id}/answers`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/forms/${form.id}/answers`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -42,6 +44,8 @@ export const Answers = (props: { form: FormType }) => {
         email: email,
         questions: questions,
       }),
+    }).then((response) => {
+      navigate('/forms/success');
     });
   };
 
@@ -71,7 +75,7 @@ export const Answers = (props: { form: FormType }) => {
           )}
         </div>
         <button onClick={sendFormQuestionsHandler}>
-          <DocumentPlusIcon />
+          Enviar Respostas
         </button>
       </div>
     </div>

@@ -13,7 +13,7 @@ export const Home = () => {
         </div>
         <ul className={styles.list}>
           <li>
-            <NavLink to="/forms/new" className={({ isActive }) => (isActive ? styles.active : undefined)} end>
+            <NavLink data-testid='new-form' to="/forms/new" className={({ isActive }) => (isActive ? styles.active : undefined)} end>
               <div className={styles.newForm}>
                 <PlusIcon />
               </div>
@@ -22,28 +22,28 @@ export const Home = () => {
         </ul>
       </div>
       <div className={styles.existentForms}>
-        <div>
-          <p>Seus Formulários</p>
-        </div>
         <Suspense fallback={<p style={{ textAlign: 'center' }}>Loading...</p>}>
           <Await resolve={loadForms()}>
             {(loadedForms) => {
               return (
-                <ul>
-                  {(loadedForms as FormType[]).map((form) => (
-                    <li>
-                      <NavLink to={`/forms/${form.id}`} className={({ isActive }) => (isActive ? styles.active : undefined)} end>
-                        <div className={styles.form}>
-                          <DocumentIcon />
-                          <div>
-                            <p>{form.title}</p>
-                            <p>{form.description}</p>
+                <>
+                  <div>{loadedForms.length === 0 ? <p>Voce não tem nenhum formulario</p> : <p>Seus Formulários</p>}</div>
+                  <ul>
+                    {(loadedForms as FormType[]).map((form) => (
+                      <li>
+                        <NavLink to={`/forms/${form.id}`} end>
+                          <div className={styles.form}>
+                            <DocumentIcon />
+                            <div>
+                              <p>{form.title}</p>
+                              <p>{form.description}</p>
+                            </div>
                           </div>
-                        </div>
-                      </NavLink>
-                    </li>
-                  ))}
-                </ul>
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </>
               );
             }}
           </Await>
@@ -54,7 +54,7 @@ export const Home = () => {
 };
 
 const loadForms = async () => {
-  const response = await fetch('http://localhost:8080/forms');
+  const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/forms`);
 
   if (!response.ok) {
     throw json(

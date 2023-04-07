@@ -36,13 +36,16 @@ a {
   flex-direction: column;
   border: 1px solid gray;
   background-color: white;
-  width: 10rem;
-  height: 8rem;
+  width: 12rem;
+  height: 10rem;
   gap: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .form p {
-  margin: 0px
+  margin: 0px;
 }
 
 .form svg {
@@ -63,4 +66,9 @@ a {
 .existentForms ul {
   display: flex;
   gap: 0.5rem;
+}
+
+.existentForms a {
+  text-decoration: none;
+  color: black;
 }

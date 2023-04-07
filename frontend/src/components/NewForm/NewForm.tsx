@@ -1,6 +1,5 @@
 import styles from './NewForm.module.css';
 import { NewQuestion } from './NewQuestion';
-import { DocumentPlusIcon } from '@heroicons/react/24/outline';
 import { FormDescription } from './FormDescription';
 import { useNewForm } from './use-new-form';
 
@@ -41,9 +40,7 @@ export const NewForm = () => {
           </div>
         )}
         <NewQuestion />
-        <button onClick={saveFormHandler}>
-          <DocumentPlusIcon />
-        </button>
+        <button onClick={saveFormHandler}>Salvar Formulario</button>
       </div>
     </div>
   );

@@ -1,4 +1,6 @@
 .textQuestion textarea {
   width: 100%;
   resize: none;
+  border-color: lightgray;
+  outline: none;
 }

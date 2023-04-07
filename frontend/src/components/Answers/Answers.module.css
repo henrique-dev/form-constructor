@@ -12,6 +12,7 @@
   gap: 1rem;
   flex-direction: column;
   width: 40rem;
+  align-items: center;
 }
 
 .formContainer div {
@@ -34,17 +35,15 @@
 }
 
 button {
-  width: 5rem;
-  height: auto;
-  padding: 0.3rem;
-  background-color: white;
-  border: 0px;
-  box-shadow: 1px 1px 0px 0px lightgray;
+  background-color: #28a745;
+  color: white;
+  width: auto;
+  padding: 0.5rem;
+  height: 2rem;
 }
 
 button:hover {
-  cursor: pointer;
-  box-shadow: 1px 1px 0px 1px lightgray;
+  background-color: #228f3b;
 }
 
 button svg {
