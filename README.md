@@ -39,4 +39,4 @@ $ cd frontend
 $ npm start
 ```
 
-E então a aplicação vai estar pronta pra rodar em http://localhost:8010.
+E então a aplicação vai estar pronta pra rodar em http://localhost:3000.
